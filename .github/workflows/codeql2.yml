@@ -13,6 +13,8 @@ jobs:
 
     - name: Setup CodeQL
       uses: github/codeql-action/init@v3
+      with:
+        queries: test
 
     - name: Build
       run: |
