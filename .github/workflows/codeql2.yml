@@ -19,4 +19,4 @@ jobs:
         gcc -fno-stack-protector vuln.c -o vuln -g
 
     - name: Analyze code
-      uses: github/codeql-action/analyze@v2
+      uses: github/codeql-action/analyze@v3
