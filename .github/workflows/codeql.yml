@@ -9,17 +9,20 @@ on:
       - main  # Trigger the workflow on PRs targeting the main branch
 
 jobs:
-  analyze:
+  setup:
     name: Analyze with CodeQL
     runs-on: ubuntu-latest  # The environment used to run the job
 
-    steps:
-    - name: Checkout the code
+  actions-checkout:
+      name: Checkout the code
       uses: actions/checkout@v2  # Checks out the code from the repository
 
-    - name: Set up CodeQL
-      uses: github/codeql-action/setup-codeql@v2  # Sets up CodeQL
+  codeql:
+    name: Set up CodeQL
+    uses: github/codeql-action/setup-codeql@v2  # Sets up CodeQL
 
+  analyze:
+    steps:
     - name: Create CodeQL Database
       run: |
         # Create the CodeQL database for your C++ project
