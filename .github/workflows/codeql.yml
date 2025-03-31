@@ -1,0 +1,41 @@
+name: CodeQL Analysis
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on push to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger the workflow on PRs targeting the main branch
+
+jobs:
+  analyze:
+    name: Analyze with CodeQL
+    runs-on: ubuntu-latest  # The environment used to run the job
+
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2  # Checks out the code from the repository
+
+    - name: Set up CodeQL
+      uses: github/codeql-action/setup-codeql@v2  # Sets up CodeQL
+
+    - name: Create CodeQL Database
+      run: |
+        # Create the CodeQL database for your C++ project
+        codeql database create vuln-db --language=cpp --command="gcc -fno-stack-protector vuln.c -o vuln -g"
+
+    - name: Run CodeQL query
+      run: |
+        # Run your custom CodeQL query (adjust the path to your query file)
+        codeql query run --database=vuln-db ./test/test.ql --timeout=30m
+
+    - name: Upload CodeQL results
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: cpp-db/codeql-results.sarif  # Path to SARIF result file
+
+    - name: Clean up
+      run: |
+        # Optionally clean up the generated CodeQL database after the analysis
+        rm -rf cpp-db
