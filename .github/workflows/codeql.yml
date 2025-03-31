@@ -12,10 +12,8 @@ jobs:
   setup:
     name: Analyze with CodeQL
     runs-on: ubuntu-latest  # The environment used to run the job
-
-  actions-checkout:
-      name: Checkout the code
-      uses: actions/checkout@v4  # Checks out the code from the repository
+    steps:
+      - uses: actions/checkout@v4  # Checks out the code from the repository
 
   codeql:
     name: Set up CodeQL
