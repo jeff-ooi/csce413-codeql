@@ -7,10 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Setup CodeQL
       uses: github/codeql-action/init@v2
+
+    - name: Build
+      run: |
+        gcc -fno-stack-protector vuln.c -o vuln -g
 
     - name: Analyze code
       uses: github/codeql-action/analyze@v2
