@@ -9,4 +9,4 @@ import cpp
 from FunctionCall call, Function f
 where (f.getName() = "strcpy" or f.getName() = "sprintf" or f.getName() = "gets" or f.getName() = "scanf")
       and call.getTarget() = f
-select call, "Potential buffer overflow due to unsafe function.", call.getLocation()
+select call, "Potential buffer overflow due to unsafe function."
