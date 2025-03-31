@@ -1,3 +1,7 @@
+?*
+  @kind problem
+*/
+
 import cpp
 
 // Find direct calls to unsafe functions
