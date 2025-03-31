@@ -14,14 +14,12 @@ jobs:
     runs-on: ubuntu-latest  # The environment used to run the job
 
   actions-checkout:
-    steps:
-    - name: Checkout the code
-      uses: actions/checkout@v2  # Checks out the code from the repository
+      name: Checkout the code
+      uses: actions/checkout@v4  # Checks out the code from the repository
 
   codeql:
-    steps:
-    - name: Set up CodeQL
-      uses: github/codeql-action/setup-codeql@v2  # Sets up CodeQL
+    name: Set up CodeQL
+    uses: github/codeql-action/setup-codeql@v2  # Sets up CodeQL
 
   analyze:
     steps:
