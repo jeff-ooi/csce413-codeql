@@ -16,4 +16,3 @@ int main() {
     vulnerable_function();
     return 0;
 }
-
