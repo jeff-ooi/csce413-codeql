@@ -1,6 +1,7 @@
 /*
-  @kind problem
-*/
+ * @name Buffer Overflow
+ * @kind problem
+ */
 
 import cpp
 
