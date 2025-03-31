@@ -8,11 +8,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-  
-  codeql-setup:
-    name: Setup CodeQL
-    uses: github/codeql-action/init@v1
-  
-  codeql-analyze:
-    name: Analyze code
-    uses: github/codeql-action/analyze@v2
+
+    - name: Setup CodeQL
+      uses: github/codeql-action/init@v1
+
+    - name: Analyze code
+      uses: github/codeql-action/analyze@v2
